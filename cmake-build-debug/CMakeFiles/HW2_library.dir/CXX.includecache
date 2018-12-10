@@ -1,0 +1,32 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/baha2/Desktop/Data Structures 1/HW2-library/StatusType.h
+
+C:/Users/baha2/Desktop/Data Structures 1/HW2-library/Tree.h
+stdio.h
+C:/Users/baha2/Desktop/Data Structures 1/HW2-library/stdio.h
+iostream
+-
+new
+-
+
+C:/Users/baha2/Desktop/Data Structures 1/HW2-library/library1Tree.cpp
+Tree.h
+C:/Users/baha2/Desktop/Data Structures 1/HW2-library/Tree.h
+library1Tree.h
+C:/Users/baha2/Desktop/Data Structures 1/HW2-library/library1Tree.h
+cstdbool
+-
+cassert
+-
+
+C:/Users/baha2/Desktop/Data Structures 1/HW2-library/library1Tree.h
+StatusType.h
+C:/Users/baha2/Desktop/Data Structures 1/HW2-library/StatusType.h
+
