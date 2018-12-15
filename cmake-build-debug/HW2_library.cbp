@@ -80,7 +80,25 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="C:/Users/baha2/Desktop/Data Structures 1/HW2-library/Image.h">
+			<Option target="HW2_library"/>
+		</Unit>
+		<Unit filename="C:/Users/baha2/Desktop/Data Structures 1/HW2-library/ImageTagger.h">
+			<Option target="HW2_library"/>
+		</Unit>
+		<Unit filename="C:/Users/baha2/Desktop/Data Structures 1/HW2-library/List.h">
+			<Option target="HW2_library"/>
+		</Unit>
+		<Unit filename="C:/Users/baha2/Desktop/Data Structures 1/HW2-library/StatusType.h">
+			<Option target="HW2_library"/>
+		</Unit>
 		<Unit filename="C:/Users/baha2/Desktop/Data Structures 1/HW2-library/Tree.h">
+			<Option target="HW2_library"/>
+		</Unit>
+		<Unit filename="C:/Users/baha2/Desktop/Data Structures 1/HW2-library/library1LL.cpp">
+			<Option target="HW2_library"/>
+		</Unit>
+		<Unit filename="C:/Users/baha2/Desktop/Data Structures 1/HW2-library/library1LL.h">
 			<Option target="HW2_library"/>
 		</Unit>
 		<Unit filename="C:/Users/baha2/Desktop/Data Structures 1/HW2-library/library1Tree.cpp">
@@ -89,7 +107,13 @@
 		<Unit filename="C:/Users/baha2/Desktop/Data Structures 1/HW2-library/library1Tree.h">
 			<Option target="HW2_library"/>
 		</Unit>
-		<Unit filename="C:/Users/baha2/Desktop/Data Structures 1/HW2-library/main.cpp">
+		<Unit filename="C:/Users/baha2/Desktop/Data Structures 1/HW2-library/library2.cpp">
+			<Option target="HW2_library"/>
+		</Unit>
+		<Unit filename="C:/Users/baha2/Desktop/Data Structures 1/HW2-library/library2.h">
+			<Option target="HW2_library"/>
+		</Unit>
+		<Unit filename="C:/Users/baha2/Desktop/Data Structures 1/HW2-library/main2.cpp">
 			<Option target="HW2_library"/>
 		</Unit>
 		<Unit filename="C:/Users/baha2/Desktop/Data Structures 1/HW2-library/CMakeLists.txt">

@@ -24,7 +24,7 @@ public:
         return valuePtr;
     }
 
-    Node *getNext() {
+    Node* getNext() {
         return next;
     }
     void setNext(Node* nextNode){
@@ -48,5 +48,10 @@ void* getHead(void *DS) {
 template <class T>
 void* getnodeValue(void *node) {
     return ((Node<T>*)node)->getValue();
+}
+
+template <class T>
+T& getnodeKey(void *node) {
+    return ((Node<T>*)node)->getKey();
 }
 #endif //HW2_LIBRARY_HW2LIST_H

@@ -4,10 +4,25 @@
 #include <cassert>
 using std::cout;
 
+void my_test_aux(Tree<int>* node,int key){
+    if(node==nullptr){
+        return;
+    }
+    if(node->getFather()->getKey()==8256){
+        cout << node->getKey()<<"********"<<key << std::endl;
+    }
+    my_test_aux(node->getLeft(),key);
+    my_test_aux(node->getRight(),key);
+}
+void my_test(void* DS,int key){
+    auto head = static_cast<Tree<int> *>(DS);
+    Tree<int>* node=head->getLeft();
+    my_test_aux(node,key);
+}
+
 void PrintTree_Aux (void* root){
     auto node = static_cast<Tree<int> *>(root);
     if (node == nullptr){
-        printf("--NULL");
         return;
     }
     cout << "--" << node->getKey()  ;
@@ -36,10 +51,20 @@ void PrintTree (void* root) {
     node=node->getLeft();
     PrintTree_Aux(node);
 }
-
-static void AVL_Fix(int BF_father, int BF_son, Tree<int> *p, Tree<int> *v) {
+//static void AVL_Fix(int BF_father, int BF_son, Tree<int> *p, Tree<int> *v) {
+static int AVL_Fix(int BF_father, Tree<int> *p) {
+    assert(p->getKey()>=0 &&p->getKey()<=11110);
+    int BF_leftSon;
+    int BF_rightSon;
+    if(p->getRight()){
+        BF_rightSon=p->getRight()->getLeft()->getHeight()-p->getRight()->getRight()->getHeight();
+    }
+    if(p->getLeft()){
+        BF_leftSon=p->getLeft()->getLeft()->getHeight()-p->getLeft()->getRight()->getHeight();
+    }
     //LL Rotation
-    if (BF_father == 2 && BF_son >= 0) {
+    if (BF_father == 2 && BF_leftSon >= 0 && (p->getLeft())) {
+        Tree<int>* v =p->getLeft();
         p->setLeft(v->getRight());
         if(v->getRight()) {
             v->getRight()->setFather(p);
@@ -53,10 +78,12 @@ static void AVL_Fix(int BF_father, int BF_son, Tree<int> *p, Tree<int> *v) {
         }
         p->setFather(v);
         p->setHeight(max(p->getLeft()->getHeight(),p->getRight()->getHeight())+1);
-        return;
+        v->setHeight(max(v->getLeft()->getHeight(),v->getRight()->getHeight())+1);
+        return v->getHeight();//returning the height of the tat tree
     }
 //LR Rotation
-    if (BF_father == 2 && BF_son == -1) {
+    if (BF_father == 2 && BF_leftSon == -1 && (p->getLeft())) {
+        Tree<int>* v =p->getLeft();
         Tree<int> *B = v->getRight();
         p->setLeft(B->getRight());
         if(B->getRight()){
@@ -79,12 +106,13 @@ static void AVL_Fix(int BF_father, int BF_son, Tree<int> *p, Tree<int> *v) {
         p->setHeight(max(p->getLeft()->getHeight(),p->getRight()->getHeight())+1);
         v->setHeight(max(v->getLeft()->getHeight(),v->getRight()->getHeight())+1);
         B->setHeight(max(p->getHeight(),v->getHeight())+1);
-        return;
+        return B->getHeight();
     }
     //RR Rotation
-    if (BF_father == -2 && BF_son <= 0) {
+    if (BF_father == -2 && BF_rightSon <= 0 && (p->getRight())) {
+        Tree<int> *v = p->getRight();
         p->setRight(v->getLeft());
-        if(v->getLeft()) {
+        if (v->getLeft()) {
             v->getLeft()->setFather(p);
         }
         v->setLeft(p);
@@ -96,11 +124,12 @@ static void AVL_Fix(int BF_father, int BF_son, Tree<int> *p, Tree<int> *v) {
         }
         p->setFather(v);
         p->setHeight(max(p->getLeft()->getHeight(), p->getRight()->getHeight()) + 1);
-        return;
+        v->setHeight(max(v->getLeft()->getHeight(), v->getRight()->getHeight()) + 1);
+        return v->getHeight();//returning the height of the tat tree
     }
     //RL Rotation
-    if (BF_father == -2 && BF_son == 1) {
-
+    if (BF_father == -2 && BF_rightSon == 1 && (p->getRight())) {
+        Tree<int>* v =p->getRight();
         Tree<int> *B = v->getLeft();
         p->setRight(B->getLeft());
         if(B->getLeft()){
@@ -108,7 +137,7 @@ static void AVL_Fix(int BF_father, int BF_son, Tree<int> *p, Tree<int> *v) {
         }
         v->setLeft(B->getRight());
         if(B->getRight()){
-            B->getRight()->setFather(p);
+            B->getRight()->setFather(v);
         }
         B->setRight(v);
         B->setLeft(p);
@@ -123,24 +152,66 @@ static void AVL_Fix(int BF_father, int BF_son, Tree<int> *p, Tree<int> *v) {
         p->setHeight(max(p->getLeft()->getHeight(),p->getRight()->getHeight())+1);
         v->setHeight(max(v->getLeft()->getHeight(),v->getRight()->getHeight())+1);
         B->setHeight(max(p->getHeight(),v->getHeight())+1);
+        return B->getHeight();
     }
+    return -1;
 }
 
+/*sortTree() receives the real root not the dummy, and the added vertice.
+it iterates over the route from the added vertice to the root and looks for
+vertices with a |BF|=2 and fixes them using AVL_Fix
+*/
+template <class  T>
+static void sortTree(Tree<T> *root, Tree<T> *v) {
+    assert(v && root);//to// make sure non of them is null
+    if (v == root) {
+        return;
+    }
+    Tree<T> *p = v->getFather();
+    if ((p->getHeight()) >= (v->getHeight() + 1)) {
+        return;
+    }
+    p->setHeight(v->getHeight() + 1);
+    int BF_father = p->getLeft()->getHeight() - p->getRight()->getHeight();
+    //int BF_son = v->getLeft()->getHeight() - v->getRight()->getHeight();
+    if (BF_father >= 2 || BF_father <= -2) {
+        AVL_Fix(BF_father ,p);
+        return;
+    }
+    sortTree<T>(root,p);
+
+}
 template<class T>
 static void sortTreeDel(Tree<T>* root, Tree<T>* v){
-    assert(v );//to make sure non of them is null
-    assert(root);
+    assert(v&&root );//to make sure non of them is null
     if (v == root) {
         return;
     }
     Tree<T>* p=v->getFather();
-    p->setHeight(max(p->getLeft()->getHeight(),p->getRight()->getHeight())+1);
-    int BF_father=p->getLeft()->getHeight()-p->getRight()->getHeight();
-    int BF_son=v->getLeft()->getHeight()-v->getRight()->getHeight();
-    if (BF_father >= 2 || BF_father <= -2) {
-        AVL_Fix(BF_father, BF_son, p, v);
+    // Tree<T>* brother=nullptr;
+    int oldHeight=v->getHeight();
+    v->setHeight(max(v->getLeft()->getHeight(),v->getRight()->getHeight())+1);
+    int newHeight=v->getHeight();
+    int BF=v->getLeft()->getHeight()-v->getRight()->getHeight();
+    //if(p->getRight()==v){
+    //    brother=p->getLeft();
+    // }
+    //else{
+    //   brother=p->getRight();
+    //}
+    //assert(brother);
+    if(BF>=2||BF<=-2){
+        //int BF_son=son->getLeft()->getHeight()-son->getRight()->getHeight();
+        newHeight = AVL_Fix(BF,v);
+        //assert(brother);
     }
-    sortTreeDel<T>(root,p);
+    //cout << "*******************8888888888******************"<<std::endl;
+    // my_test(root->getFather(),8251);
+    // cout << "*******************8888888888******************"<<std::endl;
+    if(oldHeight==newHeight){
+        return;
+    }
+    sortTreeDel(root,p);
 }
 
 
@@ -149,8 +220,10 @@ static void sortTreeDel(Tree<T>* root, Tree<T>* v){
 static void remove_node(Tree<int>* root, Tree<int>* node){
     Tree<int>* nodePa = node->getFather();//what if the node is the root what should we do????????????????????????????????????????????????
     bool leftSon = true;// the node we want to delete :leftSon = true if it is a left son : false if it is a right son
+    // Tree<int>* brother = nodePa->getRight();
     if (nodePa->getRight() == node) {
         leftSon=false;//the node we want to delete is a right son
+        //    brother = nodePa->getLeft();
     }
     if(node->getLeft()){
         //make the gradnpa point to the left son depending on leftSon
@@ -159,6 +232,7 @@ static void remove_node(Tree<int>* root, Tree<int>* node){
         }else{
             nodePa->setRight(node->getLeft());
         }
+        node->getLeft()->setFather(nodePa);
     }
     else{//if he has only one right son or no sons
         //make the grandpa point to the right son
@@ -167,12 +241,12 @@ static void remove_node(Tree<int>* root, Tree<int>* node){
         }else{
             nodePa->setRight(node->getRight());
         }
+        if(node->getRight()){
+            node->getRight()->setFather(nodePa);
+        }
     }
-    if(leftSon){
-        sortTreeDel<int>(root,nodePa->getRight());
-    }
-    else{
-        sortTreeDel<int>(root,nodePa->getLeft());
+    if(node!=root) {
+        sortTreeDel<int>(root,nodePa);
     }
     //nodePa->setHeight(max(node->getHeight()-1,nodePa->getRight()->getHeight())+1);
     //int nodepahhegiht=nodePa->getHeight();
@@ -208,6 +282,9 @@ static void swap_node(void *DS,Tree<int>* node){
     if(nextNode==rightSon){
         nextNode->setRight(node);
         node->setFather(nextNode);
+    }
+    if(nextNode!=rightSon){
+        nextNodePa->setLeft(node);
     }
     nextNode->setFather(nodePa);
     if(leftSon){
@@ -253,32 +330,6 @@ static void QuitAux(Tree<int> *head) {
 
 
 
-/*sortTree() receives the real root not the dummy, and the added vertice.
-it iterates over the route from the added vertice to the root and looks for
-vertices with a |BF|=2 and fixes them using AVL_Fix
-*/
-template <class  T>
-static void sortTree(Tree<T> *root, Tree<T> *v) {
-    assert(v && root);//to make sure non of them is null
-    if (v == root) {
-        return;
-    }
-    Tree<T> *p = v->getFather();
-    int heir=p->getHeight();
-    int heier=v->getHeight();
-    if ((p->getHeight()) >= (v->getHeight() + 1)) {
-        return;
-    }
-    p->setHeight(v->getHeight() + 1);
-    int BF_father = p->getLeft()->getHeight() - p->getRight()->getHeight();
-    int BF_son = v->getLeft()->getHeight() - v->getRight()->getHeight();
-    if (BF_father >= 2 || BF_father <= -2) {
-        AVL_Fix(BF_father, BF_son, p, v);
-        return;
-    }
-    sortTree<T>(root,p);
-
-}
 
 void *Init_Tree() {
     try {
@@ -357,12 +408,16 @@ StatusType Delete_Tree(void *DS, int key){
     if(!DS){
         return INVALID_INPUT;
     }
+/*	if(key==8251){
+	    PrintTree(DS);
+	    cout << "";
+    }*/
     Tree<int>* node = Find_Helper( DS , key );
-    //cout<< "*****************"<<node->getKey()<<"******************";
     if(!node){
         return FAILURE;//because the key wasn't found
     }
     DeleteByPointer_Tree(DS,node);
+    //my_test(DS,key);
     return SUCCESS;
 }
 
@@ -374,11 +429,8 @@ StatusType DeleteByPointer_Tree(void *DS, void* node_del){
     if(node->getLeft() && node->getRight()){//if he has two sons
         swap_node(DS,node);
     }
-
-    Tree<int>* father = node->getFather();
     auto head = static_cast<Tree<int> *>(DS);
-    remove_node(head->getLeft(),node);//this function deallocates the node
-    // remove_node sorts the tree
+    remove_node(head->getLeft(),node);//this function deallocates the node and sorts the tree
     head->size--;
     return SUCCESS;
 }
@@ -395,6 +447,7 @@ StatusType Size_Tree(void *DS, int *n) {
 void Quit_Tree(void **DS) {
     auto head = static_cast<Tree<int> *>(*DS);
     QuitAux(head);
-    DS = nullptr;
+    *DS = nullptr;
+
 }
 

@@ -20,7 +20,7 @@ extern "C" {
 
 /* Return Values
  * ----------------------------------- */
-#include "StatusType.h" // for enums
+#include "StatusType.h"
 
 /* Required Interface for the Data Structure
  * -----------------------------------------*/

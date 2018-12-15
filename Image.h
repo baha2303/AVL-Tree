@@ -11,16 +11,21 @@
 #include <new>
 class Image {
     void** SegmentsPtr;
+    int* segmentsvalues;
     void* Unlabeled;
     int segments;
 
 public:
-
     explicit  Image(int Segments) {
-        SegmentsPtr = new  void*[Segments];
+        SegmentsPtr = new void*[Segments];
+        segmentsvalues=new int[Segments];
+        for(int i=0;i<Segments;i++) {
+            SegmentsPtr[i]= nullptr;
+        }
         Unlabeled = Init_LL();
+        void* node;
         for (int i = 0; i < Segments; i++) {
-            Add(Unlabeled, i, nullptr, &(SegmentsPtr[i]));
+            Add(Unlabeled, i, nullptr, &node);
         }
         segments=Segments;
     }
@@ -33,15 +38,17 @@ public:
 
     void Delete_All_Labels () {
         Quit_LL(&Unlabeled);
-        delete SegmentsPtr;
+        delete[] SegmentsPtr;
+        delete[] segmentsvalues;
     }
 
     StatusType AddLabel( int segmentID, int label) {
         void *value;
+
         if (Find(Unlabeled, segmentID, &value) != SUCCESS)
             return FAILURE;
-        *(int *) value = label;
-        SegmentsPtr[segmentID]=value;
+        SegmentsPtr[segmentID]=&segmentsvalues[segmentID];
+        segmentsvalues[segmentID]=label;
         Delete(Unlabeled,segmentID);
         return SUCCESS;
     }
@@ -49,17 +56,18 @@ public:
     StatusType getLabel (int segmentID, int* label) {
         if(SegmentsPtr[segmentID]== nullptr)
             return FAILURE;
-        *label=*(int*)SegmentsPtr[segmentID];
+        *label=segmentsvalues[segmentID];
         return SUCCESS;
     }
 
     StatusType DeleteLabel(int segmentID) {
 
-        if((int*)SegmentsPtr[segmentID] == nullptr)
+        if(SegmentsPtr[segmentID]== nullptr)
             return FAILURE;
 
-        return  Add(Unlabeled,segmentID, nullptr,&SegmentsPtr[segmentID]);
-
+       SegmentsPtr[segmentID]= nullptr;
+       void *node;
+        return  Add(Unlabeled,segmentID, nullptr,&node);
 
     }
 
@@ -68,19 +76,27 @@ public:
 
         Size(Unlabeled,numOfSegments) ;
 
-        if(*numOfSegments==0)
+        if(*numOfSegments==0) {
+            *segments= nullptr;
             return FAILURE;
+        }
+
         int size=*numOfSegments;
 
-        *segments = (int*)std::malloc(size * sizeof(int));
-        if(!(*segments))
+        int  *seg = (int*)std::malloc(size * sizeof(int));
+        if(!(seg))
             return ALLOCATION_ERROR;
 
         int i=0;
+        int key;
         for(void* head=getHead<int>(Unlabeled) ; head != nullptr ; head=getNext<int>(head)  ) {
-            *(segments[i])=*(int*)getnodeValue<int>(head);
+
+
+            key=getnodeKey<int>(head);
+            (seg[i])=key;
             i++;
         }
+        *segments=seg;
         return SUCCESS;
 
     }

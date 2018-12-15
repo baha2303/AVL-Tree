@@ -19,10 +19,12 @@
  * Return Values: A pointer to a new instance of the data structure - as a void* pointer.
  */
 void *Init(int segments){
+    if(segments<=0){
+        return nullptr;
+    }
     try {
         ImageTagger *DS = new ImageTagger(segments);
         return (void*)DS;
-
     }catch (...) {
         return nullptr;
     }
@@ -55,7 +57,7 @@ StatusType AddImage(void *DS, int imageID) {
  */
 StatusType DeleteImage(void *DS, int imageID) {
     if(!DS || imageID <= 0) return INVALID_INPUT;
-    return   Delete(DS,imageID);
+    return ((ImageTagger*)DS)->DeleteImage(imageID);
 
 }
 
@@ -71,9 +73,9 @@ StatusType DeleteImage(void *DS, int imageID) {
  *                SUCCESS - Otherwise.
  */
 StatusType AddLabel(void *DS, int imageID, int segmentID, int label) {
-                if(!DS || imageID <0 || segmentID >=((ImageTagger*)DS)->getSegments() || segmentID <0 || label < 0 ) {
-                    return INVALID_INPUT;
-                }
+    if(!DS || imageID <=0 || segmentID >=((ImageTagger*)DS)->getSegments() || segmentID <0 || label <= 0 ) {
+        return INVALID_INPUT;
+    }
     return ((ImageTagger*)DS)->AddLabel(imageID,segmentID,label);
 }
 
@@ -89,7 +91,7 @@ StatusType AddLabel(void *DS, int imageID, int segmentID, int label) {
  *                SUCCESS - Otherwise.
  */
 StatusType GetLabel(void *DS, int imageID, int segmentID, int *label) {
-    if(!DS || imageID <0 || segmentID >=((ImageTagger*)DS)->getSegments() || segmentID <0 || label == NULL ) {
+    if(!DS || imageID <=0 || segmentID >=((ImageTagger*)DS)->getSegments() || segmentID <0 || label == NULL ) {
         return INVALID_INPUT;
     }
     return ((ImageTagger*)DS)->getLabel(imageID,segmentID,label);
@@ -106,9 +108,14 @@ StatusType GetLabel(void *DS, int imageID, int segmentID, int *label) {
  *                SUCCESS - Otherwise.
  */
 StatusType DeleteLabel(void *DS, int imageID, int segmentID) {
-    if(!DS || imageID <0 || segmentID >=((ImageTagger*)DS)->getSegments() || segmentID <0  ) {
+    if(!DS || imageID <=0 || segmentID >=((ImageTagger*)DS)->getSegments() || segmentID <0  ) {
         return INVALID_INPUT;
     }
+    int num;
+    if(GetLabel(DS,imageID,segmentID,&num)==FAILURE){
+        return FAILURE;
+    }
+
     return ((ImageTagger*)DS)->DeleteLabel(imageID,segmentID);
 }
 
@@ -140,7 +147,7 @@ StatusType GetAllUnLabeledSegments(void *DS, int imageID, int **segments, int *n
  *                SUCCESS - Otherwise.
  */
 StatusType GetAllSegmentsByLabel(void *DS, int label, int **images, int **segments, int *numOfSegments) {
-    if(!DS || ! images || !segments || !numOfSegments  || label<0) {
+    if(!DS || ! images || !segments || !numOfSegments  || label<=0) {
         return INVALID_INPUT;
     }
     return ((ImageTagger*)DS)->GetAllSegments(DS,label,images,segments,numOfSegments);
@@ -153,6 +160,12 @@ StatusType GetAllSegmentsByLabel(void *DS, int label, int **images, int **segmen
  * Return Values: None.
  */
 void Quit(void** DS) {
-    ((ImageTagger*)DS)->Quit_Tagger();
-}
+    if( !DS ||   !(*DS) ) {
+        *DS = nullptr;
+        return;;
+    }
 
+        ((ImageTagger *) *DS)->Quit_Tagger();
+        delete ((ImageTagger *) *DS);
+        *DS = nullptr;
+    }

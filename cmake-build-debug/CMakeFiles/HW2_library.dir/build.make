@@ -56,22 +56,35 @@ include CMakeFiles/HW2_library.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/HW2_library.dir/flags.make
 
-CMakeFiles/HW2_library.dir/main.cpp.obj: CMakeFiles/HW2_library.dir/flags.make
-CMakeFiles/HW2_library.dir/main.cpp.obj: ../main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="C:\Users\baha2\Desktop\Data Structures 1\HW2-library\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/HW2_library.dir/main.cpp.obj"
-	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\HW2_library.dir\main.cpp.obj -c "C:\Users\baha2\Desktop\Data Structures 1\HW2-library\main.cpp"
+CMakeFiles/HW2_library.dir/main2.cpp.obj: CMakeFiles/HW2_library.dir/flags.make
+CMakeFiles/HW2_library.dir/main2.cpp.obj: ../main2.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="C:\Users\baha2\Desktop\Data Structures 1\HW2-library\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/HW2_library.dir/main2.cpp.obj"
+	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\HW2_library.dir\main2.cpp.obj -c "C:\Users\baha2\Desktop\Data Structures 1\HW2-library\main2.cpp"
 
-CMakeFiles/HW2_library.dir/main.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/HW2_library.dir/main.cpp.i"
-	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\baha2\Desktop\Data Structures 1\HW2-library\main.cpp" > CMakeFiles\HW2_library.dir\main.cpp.i
+CMakeFiles/HW2_library.dir/main2.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/HW2_library.dir/main2.cpp.i"
+	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\baha2\Desktop\Data Structures 1\HW2-library\main2.cpp" > CMakeFiles\HW2_library.dir\main2.cpp.i
 
-CMakeFiles/HW2_library.dir/main.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/HW2_library.dir/main.cpp.s"
-	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "C:\Users\baha2\Desktop\Data Structures 1\HW2-library\main.cpp" -o CMakeFiles\HW2_library.dir\main.cpp.s
+CMakeFiles/HW2_library.dir/main2.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/HW2_library.dir/main2.cpp.s"
+	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "C:\Users\baha2\Desktop\Data Structures 1\HW2-library\main2.cpp" -o CMakeFiles\HW2_library.dir\main2.cpp.s
+
+CMakeFiles/HW2_library.dir/library2.cpp.obj: CMakeFiles/HW2_library.dir/flags.make
+CMakeFiles/HW2_library.dir/library2.cpp.obj: ../library2.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="C:\Users\baha2\Desktop\Data Structures 1\HW2-library\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/HW2_library.dir/library2.cpp.obj"
+	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\HW2_library.dir\library2.cpp.obj -c "C:\Users\baha2\Desktop\Data Structures 1\HW2-library\library2.cpp"
+
+CMakeFiles/HW2_library.dir/library2.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/HW2_library.dir/library2.cpp.i"
+	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\baha2\Desktop\Data Structures 1\HW2-library\library2.cpp" > CMakeFiles\HW2_library.dir\library2.cpp.i
+
+CMakeFiles/HW2_library.dir/library2.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/HW2_library.dir/library2.cpp.s"
+	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "C:\Users\baha2\Desktop\Data Structures 1\HW2-library\library2.cpp" -o CMakeFiles\HW2_library.dir\library2.cpp.s
 
 CMakeFiles/HW2_library.dir/library1Tree.cpp.obj: CMakeFiles/HW2_library.dir/flags.make
 CMakeFiles/HW2_library.dir/library1Tree.cpp.obj: ../library1Tree.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="C:\Users\baha2\Desktop\Data Structures 1\HW2-library\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/HW2_library.dir/library1Tree.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="C:\Users\baha2\Desktop\Data Structures 1\HW2-library\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/HW2_library.dir/library1Tree.cpp.obj"
 	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\HW2_library.dir\library1Tree.cpp.obj -c "C:\Users\baha2\Desktop\Data Structures 1\HW2-library\library1Tree.cpp"
 
 CMakeFiles/HW2_library.dir/library1Tree.cpp.i: cmake_force
@@ -82,21 +95,38 @@ CMakeFiles/HW2_library.dir/library1Tree.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/HW2_library.dir/library1Tree.cpp.s"
 	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "C:\Users\baha2\Desktop\Data Structures 1\HW2-library\library1Tree.cpp" -o CMakeFiles\HW2_library.dir\library1Tree.cpp.s
 
+CMakeFiles/HW2_library.dir/library1LL.cpp.obj: CMakeFiles/HW2_library.dir/flags.make
+CMakeFiles/HW2_library.dir/library1LL.cpp.obj: ../library1LL.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="C:\Users\baha2\Desktop\Data Structures 1\HW2-library\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/HW2_library.dir/library1LL.cpp.obj"
+	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\HW2_library.dir\library1LL.cpp.obj -c "C:\Users\baha2\Desktop\Data Structures 1\HW2-library\library1LL.cpp"
+
+CMakeFiles/HW2_library.dir/library1LL.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/HW2_library.dir/library1LL.cpp.i"
+	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\baha2\Desktop\Data Structures 1\HW2-library\library1LL.cpp" > CMakeFiles\HW2_library.dir\library1LL.cpp.i
+
+CMakeFiles/HW2_library.dir/library1LL.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/HW2_library.dir/library1LL.cpp.s"
+	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "C:\Users\baha2\Desktop\Data Structures 1\HW2-library\library1LL.cpp" -o CMakeFiles\HW2_library.dir\library1LL.cpp.s
+
 # Object files for target HW2_library
 HW2_library_OBJECTS = \
-"CMakeFiles/HW2_library.dir/main.cpp.obj" \
-"CMakeFiles/HW2_library.dir/library1Tree.cpp.obj"
+"CMakeFiles/HW2_library.dir/main2.cpp.obj" \
+"CMakeFiles/HW2_library.dir/library2.cpp.obj" \
+"CMakeFiles/HW2_library.dir/library1Tree.cpp.obj" \
+"CMakeFiles/HW2_library.dir/library1LL.cpp.obj"
 
 # External object files for target HW2_library
 HW2_library_EXTERNAL_OBJECTS =
 
-HW2_library.exe: CMakeFiles/HW2_library.dir/main.cpp.obj
+HW2_library.exe: CMakeFiles/HW2_library.dir/main2.cpp.obj
+HW2_library.exe: CMakeFiles/HW2_library.dir/library2.cpp.obj
 HW2_library.exe: CMakeFiles/HW2_library.dir/library1Tree.cpp.obj
+HW2_library.exe: CMakeFiles/HW2_library.dir/library1LL.cpp.obj
 HW2_library.exe: CMakeFiles/HW2_library.dir/build.make
 HW2_library.exe: CMakeFiles/HW2_library.dir/linklibs.rsp
 HW2_library.exe: CMakeFiles/HW2_library.dir/objects1.rsp
 HW2_library.exe: CMakeFiles/HW2_library.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="C:\Users\baha2\Desktop\Data Structures 1\HW2-library\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable HW2_library.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="C:\Users\baha2\Desktop\Data Structures 1\HW2-library\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable HW2_library.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\HW2_library.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

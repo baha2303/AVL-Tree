@@ -122,6 +122,33 @@ HW2_library/fast:
 	$(MAKE) -f CMakeFiles\HW2_library.dir\build.make CMakeFiles/HW2_library.dir/build
 .PHONY : HW2_library/fast
 
+library1LL.obj: library1LL.cpp.obj
+
+.PHONY : library1LL.obj
+
+# target to build an object file
+library1LL.cpp.obj:
+	$(MAKE) -f CMakeFiles\HW2_library.dir\build.make CMakeFiles/HW2_library.dir/library1LL.cpp.obj
+.PHONY : library1LL.cpp.obj
+
+library1LL.i: library1LL.cpp.i
+
+.PHONY : library1LL.i
+
+# target to preprocess a source file
+library1LL.cpp.i:
+	$(MAKE) -f CMakeFiles\HW2_library.dir\build.make CMakeFiles/HW2_library.dir/library1LL.cpp.i
+.PHONY : library1LL.cpp.i
+
+library1LL.s: library1LL.cpp.s
+
+.PHONY : library1LL.s
+
+# target to generate assembly for a file
+library1LL.cpp.s:
+	$(MAKE) -f CMakeFiles\HW2_library.dir\build.make CMakeFiles/HW2_library.dir/library1LL.cpp.s
+.PHONY : library1LL.cpp.s
+
 library1Tree.obj: library1Tree.cpp.obj
 
 .PHONY : library1Tree.obj
@@ -149,32 +176,59 @@ library1Tree.cpp.s:
 	$(MAKE) -f CMakeFiles\HW2_library.dir\build.make CMakeFiles/HW2_library.dir/library1Tree.cpp.s
 .PHONY : library1Tree.cpp.s
 
-main.obj: main.cpp.obj
+library2.obj: library2.cpp.obj
 
-.PHONY : main.obj
+.PHONY : library2.obj
 
 # target to build an object file
-main.cpp.obj:
-	$(MAKE) -f CMakeFiles\HW2_library.dir\build.make CMakeFiles/HW2_library.dir/main.cpp.obj
-.PHONY : main.cpp.obj
+library2.cpp.obj:
+	$(MAKE) -f CMakeFiles\HW2_library.dir\build.make CMakeFiles/HW2_library.dir/library2.cpp.obj
+.PHONY : library2.cpp.obj
 
-main.i: main.cpp.i
+library2.i: library2.cpp.i
 
-.PHONY : main.i
+.PHONY : library2.i
 
 # target to preprocess a source file
-main.cpp.i:
-	$(MAKE) -f CMakeFiles\HW2_library.dir\build.make CMakeFiles/HW2_library.dir/main.cpp.i
-.PHONY : main.cpp.i
+library2.cpp.i:
+	$(MAKE) -f CMakeFiles\HW2_library.dir\build.make CMakeFiles/HW2_library.dir/library2.cpp.i
+.PHONY : library2.cpp.i
 
-main.s: main.cpp.s
+library2.s: library2.cpp.s
 
-.PHONY : main.s
+.PHONY : library2.s
 
 # target to generate assembly for a file
-main.cpp.s:
-	$(MAKE) -f CMakeFiles\HW2_library.dir\build.make CMakeFiles/HW2_library.dir/main.cpp.s
-.PHONY : main.cpp.s
+library2.cpp.s:
+	$(MAKE) -f CMakeFiles\HW2_library.dir\build.make CMakeFiles/HW2_library.dir/library2.cpp.s
+.PHONY : library2.cpp.s
+
+main2.obj: main2.cpp.obj
+
+.PHONY : main2.obj
+
+# target to build an object file
+main2.cpp.obj:
+	$(MAKE) -f CMakeFiles\HW2_library.dir\build.make CMakeFiles/HW2_library.dir/main2.cpp.obj
+.PHONY : main2.cpp.obj
+
+main2.i: main2.cpp.i
+
+.PHONY : main2.i
+
+# target to preprocess a source file
+main2.cpp.i:
+	$(MAKE) -f CMakeFiles\HW2_library.dir\build.make CMakeFiles/HW2_library.dir/main2.cpp.i
+.PHONY : main2.cpp.i
+
+main2.s: main2.cpp.s
+
+.PHONY : main2.s
+
+# target to generate assembly for a file
+main2.cpp.s:
+	$(MAKE) -f CMakeFiles\HW2_library.dir\build.make CMakeFiles/HW2_library.dir/main2.cpp.s
+.PHONY : main2.cpp.s
 
 # Help Target
 help:
@@ -185,12 +239,18 @@ help:
 	@echo ... HW2_library
 	@echo ... edit_cache
 	@echo ... rebuild_cache
+	@echo ... library1LL.obj
+	@echo ... library1LL.i
+	@echo ... library1LL.s
 	@echo ... library1Tree.obj
 	@echo ... library1Tree.i
 	@echo ... library1Tree.s
-	@echo ... main.obj
-	@echo ... main.i
-	@echo ... main.s
+	@echo ... library2.obj
+	@echo ... library2.i
+	@echo ... library2.s
+	@echo ... main2.obj
+	@echo ... main2.i
+	@echo ... main2.s
 .PHONY : help
 
 
